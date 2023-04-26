@@ -1,0 +1,13 @@
+type Request {
+	Address string `path:"address"`
+}
+
+type Response {
+	Permission int64 `json:"permission"`
+}
+
+service search-api {
+	@doc "查询数据库中是否有白名单权限"
+	@handler SearchHandler
+	get /search/:address(Request) returns (Response)
+}

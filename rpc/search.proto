@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package user;
+
+// protoc-gen-go 版本大于1.4.0, proto文件需要加上go_package,否则无法生成
+option go_package = "./search";
+
+message AddressRequest {
+  string address = 1;
+}
+
+message AddressResponse {
+  // 推特地址
+  string twitter_address = 1;
+  // 权限
+  int permission = 2;
+}
+
+service User {
+  rpc getUser(AddressRequest) returns(AddressResponse);
+}
